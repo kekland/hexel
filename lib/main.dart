@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
       ),
       builder: (context, child) => ThemeProvider(
         child: child,
-        theme: defaultLightTheme,
+        theme: defaultDarkTheme,
       ),
       home: StylePage(),
     );

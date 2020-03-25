@@ -42,24 +42,34 @@ class InputField extends StatelessWidget {
     var _textColor = textColor ?? theme.typography.colors.primary;
     var _hintColor = hintColor ?? theme.typography.colors.muted;
 
+    _backgroundColor =
+        !enabled ? theme.colors.controlDisabled : _backgroundColor;
+
+    _textColor = !enabled ? theme.typography.colors.disabled : _textColor;
+
     return Surface(
       padding: _padding,
       color: _backgroundColor,
       borderRadius: borderRadius,
-      child: Material.TextField(
-        controller: controller,
-        focusNode: focusNode,
-        style: TextStyle(
-          color: _textColor,
-        ),
-        decoration: Material.InputDecoration(
-          hintStyle: TextStyle(
-            color: _hintColor,
+      child: AbsorbPointer(
+        absorbing: !enabled,
+        child: Material.TextField(
+          controller: controller,
+          focusNode: focusNode,
+          style: TextStyle(
+            color: _textColor,
           ),
-          hintText: hint,
-          labelText: label,
-          icon: icon,
-          border: Material.InputBorder.none,
+          readOnly: !enabled,
+          enableInteractiveSelection: enabled,
+          decoration: Material.InputDecoration(
+            hintStyle: TextStyle(
+              color: _hintColor,
+            ),
+            hintText: hint,
+            labelText: label,
+            icon: icon,
+            border: Material.InputBorder.none,
+          ),
         ),
       ),
     );

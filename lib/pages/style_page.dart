@@ -28,6 +28,7 @@ class StylePage extends StatelessWidget {
                   icon: Icon(
                     Material.Icons.alternate_email,
                   ),
+                  enabled: true,
                 ),
                 SizedBox(height: 16.0),
                 Button(
